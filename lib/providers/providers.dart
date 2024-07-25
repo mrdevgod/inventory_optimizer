@@ -1,3 +1,4 @@
+import 'package:drift/src/runtime/query_builder/query_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inventory_optimizer/db/database.dart';
 
@@ -25,6 +26,10 @@ class ClientsNotifier extends StateNotifier<AsyncValue<List<Client>>> {
   Future<void> deleteClient(Client client) async {
     await db.deleteClient(client);
     await _fetchClients();
+  }
+
+  Future<Client> getItemById(int id) async {
+    return await db.getClientById(id);
   }
 }
 
@@ -79,6 +84,10 @@ class InventoryNotifier extends StateNotifier<AsyncValue<List<InventoryData>>> {
   Future<void> deleteInventoryItem(InventoryData inventoryItem) async {
     await db.deleteInventoryItem(inventoryItem);
     await _fetchInventory();
+  }
+
+  Future<InventoryData> getItemById(int id) async {
+    return await db.getInventoryItemById(id);
   }
 }
 

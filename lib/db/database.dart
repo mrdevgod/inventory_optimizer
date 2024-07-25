@@ -50,6 +50,8 @@ class AppDatabase extends _$AppDatabase {
   Future<int> insertClient(Client client) => into(clients).insert(client);
   Future<bool> updateClient(Client client) => update(clients).replace(client);
   Future<int> deleteClient(Client client) => delete(clients).delete(client);
+  Future<Client> getClientById(int id) =>
+      (select(clients)..where((table) => table.id.equals(id))).getSingle();
 
   // Inventory
   Future<List<InventoryData>> getAllInventory() => select(inventory).get();
@@ -59,4 +61,6 @@ class AppDatabase extends _$AppDatabase {
       update(inventory).replace(inventoryItem);
   Future<int> deleteInventoryItem(InventoryData inventoryItem) =>
       delete(inventory).delete(inventoryItem);
+  Future<InventoryData> getInventoryItemById(int id) =>
+      (select(inventory)..where((table) => table.id.equals(id))).getSingle();
 }
