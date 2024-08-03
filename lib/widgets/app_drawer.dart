@@ -41,9 +41,6 @@ class AppDrawer extends StatelessWidget {
           DrawerListTile(title: 'مستودع المنتجات', route: Inventory()),
           DrawerListTile(title: 'مستودع المواد الأولية', route: Inventory()),
           DrawerListTile(title: 'الزبائن', route: Clients()),
-          DrawerListTile(title: 'الوصفات', route: Inventory()),
-          DrawerListTile(title: 'الموظفين', route: Inventory()),
-          DrawerListTile(title: 'السجل', route: Inventory()),
         ],
       ),
     );

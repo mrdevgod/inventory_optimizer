@@ -86,7 +86,7 @@ class OrderCard extends ConsumerWidget {
                 return const Text('جاري التحميل ...');
               },
             ),
-            Item(name: 'العدد:', value: order.quantity.toString()),
+            Item(name: 'العدد:', value: '${order.quantity} | يوجد: ${35} | الباقي: ${order.quantity - 35}'),
             FutureBuilder(
               future: getClient(order.to),
               builder: (BuildContext context, AsyncSnapshot<Client> snapshot) {
@@ -97,6 +97,19 @@ class OrderCard extends ConsumerWidget {
               },
             ),
             Item(name: 'التاريخ:', value: order.createdAt.toString()),
+            FutureBuilder(
+              future: getCategory(order.category),
+              builder: (BuildContext context,
+                  AsyncSnapshot<InventoryData> snapshot) {
+                if (snapshot.hasData) {
+                  return Item(
+                      name: 'السعر:',
+                      value:
+                          '${snapshot.data!.unitPrice * order.quantity} ل.س');
+                }
+                return const Text('جاري التحميل ...');
+              },
+            ),
           ],
         ),
       ),

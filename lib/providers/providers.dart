@@ -1,4 +1,3 @@
-import 'package:drift/src/runtime/query_builder/query_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inventory_optimizer/db/database.dart';
 
